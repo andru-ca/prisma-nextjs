@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { PrismicPreview } from "@prismicio/next";
+import { repositoryName } from "@/prismicio";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
@@ -29,6 +31,7 @@ export default function RootLayout({
       >
         {children}
       </body>
+      <PrismicPreview repositoryName={repositoryName} />
     </html>
   );
 }
