@@ -3,5 +3,7 @@
 import dynamic from "next/dynamic";
 
 export const components = {
+  faq_accordion: dynamic(() => import("./FaqAccordion")),
   hero: dynamic(() => import("./Hero")),
+  metrics_highlight: dynamic(() => import("./MetricsHighlight")),
 };

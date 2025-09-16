@@ -1,0 +1,55 @@
+{
+  "type": "SharedSlice",
+  "id": "faq_accordion",
+  "name": "FaqAccordion",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "description": "Standard FAQ accordion presentation with question and answer toggle.",
+      "version": "initial",
+      "imageUrl": "",
+      "docURL": "...",
+      "primary": {
+        "title": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Title",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "single": "heading2"
+          }
+        },
+        "items": {
+          "type": "Group",
+          "config": {
+            "label": "Questions",
+            "fields": {
+              "label": {
+                "type": "Text",
+                "config": {
+                  "label": "Index Label"
+                }
+              },
+              "question": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "heading3,strong,em",
+                  "label": "Question"
+                }
+              },
+              "answer": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "paragraph,strong,em,hyperlink",
+                  "label": "Answer"
+                }
+              }
+            }
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

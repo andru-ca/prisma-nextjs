@@ -1,7 +1,7 @@
 {
   "format": "page",
-  "id": "homepage",
-  "label": "Homepage",
+  "id": "services_page",
+  "label": "services_page",
   "repeatable": false,
   "status": true,
   "json": {
@@ -11,7 +11,7 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
-            "metrics_highlight": {
+            "faq_accordion": {
               "type": "SharedSlice"
             },
             "hero": {

@@ -22,16 +22,19 @@ const Hero: FC<HeroProps> = ({ slice }) => {
       <div className="absolute inset-0">
       <PrismicNextImage field={slice.primary.image} alt="" priority fill  className="object-cover"/>
       </div>
-      <div className="relative flex h-screen flex-col justify-center items-center">
+      <div className="relative flex h-screen flex-col justify-center items-center gap-7">
         <div className="max-w-xl text-6xl leading-light text-neutral-50 md:text-7x1 lg:text-8x1">
          <PrismicRichText field={slice.primary.heading} />
         </div>
+        <div className="text-neutral-50 w-2xl text-center">
+           <PrismicRichText field={slice.primary.body}/>
+        </div>
    
-    <PrismicRichText field={slice.primary.body} />
+   
 
     <PrismicNextLink
   field={slice.primary.button}
-  className={slice.primary.button.variant}
+  className="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-black bg-white hover:bg-blue-700 transition-all duration-300 ease-in-out rounded-lg shadow-lg hover:shadow-xl transform hover:-translate-y-1 focus:outline-none focus:ring-4 focus:ring-blue-500 focus:ring-opacity-50"
 />
 </div>
 

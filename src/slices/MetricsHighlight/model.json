@@ -1,0 +1,59 @@
+{
+  "type": "SharedSlice",
+  "id": "metrics_highlight",
+  "name": "MetricsHighlight",
+  "variations": [
+    {
+      "id": "grid_icon_metrics",
+      "name": "Grid Icon Metrics",
+      "description": "Metrics/features shown in a grid layout, each with an icon, title, and description. Title and intro on the left; features on the right.",
+      "version": "initial",
+      "imageUrl": "",
+      "docURL": "...",
+      "primary": {
+        "title": {
+          "type": "StructuredText",
+          "config": {
+            "multi": "heading1",
+            "label": "Title"
+          }
+        },
+        "description": {
+          "type": "StructuredText",
+          "config": {
+            "multi": "paragraph,strong,em,hyperlink",
+            "label": "Description"
+          }
+        },
+        "metrics": {
+          "type": "Group",
+          "config": {
+            "label": "Metrics",
+            "fields": {
+              "icon": {
+                "type": "Image",
+                "config": {
+                  "label": "Icon"
+                }
+              },
+              "metric_title": {
+                "type": "StructuredText",
+                "config": {
+                  "single": "heading3",
+                  "label": "Metric Title"
+                }
+              },
+              "metric_description": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "paragraph,strong,em,hyperlink",
+                  "label": "Metric Description"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
+}

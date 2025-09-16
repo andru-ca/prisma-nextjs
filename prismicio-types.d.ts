@@ -69,7 +69,7 @@ type ContentRelationshipFieldWithData<
   >;
 }[Exclude<TCustomType[number], string>["id"]];
 
-type HomepageDocumentDataSlicesSlice = HeroSlice;
+type HomepageDocumentDataSlicesSlice = MetricsHighlightSlice | HeroSlice;
 
 /**
  * Content for Homepage documents
@@ -134,7 +134,270 @@ export type HomepageDocument<Lang extends string = string> =
     Lang
   >;
 
-export type AllDocumentTypes = HomepageDocument;
+type PageDocumentDataSlicesSlice = FaqAccordionSlice | HeroSlice;
+
+/**
+ * Content for Página documents
+ */
+interface PageDocumentData {
+  /**
+   * Slice Zone field in *Página*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: page.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/slices
+   */
+  slices: prismic.SliceZone<PageDocumentDataSlicesSlice> /**
+   * Meta Title field in *Página*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **API ID Path**: page.meta_title
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */;
+  meta_title: prismic.KeyTextField;
+
+  /**
+   * Meta Description field in *Página*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A brief summary of the page
+   * - **API ID Path**: page.meta_description
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  meta_description: prismic.KeyTextField;
+
+  /**
+   * Meta Image field in *Página*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: page.meta_image
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  meta_image: prismic.ImageField<never>;
+}
+
+/**
+ * Página document from Prismic
+ *
+ * - **API ID**: `page`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/content-modeling
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type PageDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<Simplify<PageDocumentData>, "page", Lang>;
+
+/**
+ * Content for Servicio documents
+ */
+interface ServiceDocumentData {
+  /**
+   * title field in *Servicio*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: service.title
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * description field in *Servicio*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: service.description
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  description: prismic.KeyTextField;
+}
+
+/**
+ * Servicio document from Prismic
+ *
+ * - **API ID**: `service`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/content-modeling
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type ServiceDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<
+    Simplify<ServiceDocumentData>,
+    "service",
+    Lang
+  >;
+
+type ServicesPageDocumentDataSlicesSlice = FaqAccordionSlice | HeroSlice;
+
+/**
+ * Content for services_page documents
+ */
+interface ServicesPageDocumentData {
+  /**
+   * Slice Zone field in *services_page*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: services_page.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/slices
+   */
+  slices: prismic.SliceZone<ServicesPageDocumentDataSlicesSlice> /**
+   * Meta Title field in *services_page*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **API ID Path**: services_page.meta_title
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */;
+  meta_title: prismic.KeyTextField;
+
+  /**
+   * Meta Description field in *services_page*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A brief summary of the page
+   * - **API ID Path**: services_page.meta_description
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  meta_description: prismic.KeyTextField;
+
+  /**
+   * Meta Image field in *services_page*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: services_page.meta_image
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  meta_image: prismic.ImageField<never>;
+}
+
+/**
+ * services_page document from Prismic
+ *
+ * - **API ID**: `services_page`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/content-modeling
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type ServicesPageDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithoutUID<
+    Simplify<ServicesPageDocumentData>,
+    "services_page",
+    Lang
+  >;
+
+export type AllDocumentTypes =
+  | HomepageDocument
+  | PageDocument
+  | ServiceDocument
+  | ServicesPageDocument;
+
+/**
+ * Item in *FaqAccordion → Default → Primary → Questions*
+ */
+export interface FaqAccordionSliceDefaultPrimaryItemsItem {
+  /**
+   * Index Label field in *FaqAccordion → Default → Primary → Questions*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: faq_accordion.default.primary.items[].label
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  label: prismic.KeyTextField;
+
+  /**
+   * Question field in *FaqAccordion → Default → Primary → Questions*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: faq_accordion.default.primary.items[].question
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  question: prismic.RichTextField;
+
+  /**
+   * Answer field in *FaqAccordion → Default → Primary → Questions*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: faq_accordion.default.primary.items[].answer
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  answer: prismic.RichTextField;
+}
+
+/**
+ * Primary content in *FaqAccordion → Default → Primary*
+ */
+export interface FaqAccordionSliceDefaultPrimary {
+  /**
+   * Title field in *FaqAccordion → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: faq_accordion.default.primary.title
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  title: prismic.RichTextField;
+
+  /**
+   * Questions field in *FaqAccordion → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: faq_accordion.default.primary.items[]
+   * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
+   */
+  items: prismic.GroupField<Simplify<FaqAccordionSliceDefaultPrimaryItemsItem>>;
+}
+
+/**
+ * Default variation for FaqAccordion Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Standard FAQ accordion presentation with question and answer toggle.
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type FaqAccordionSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<FaqAccordionSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *FaqAccordion*
+ */
+type FaqAccordionSliceVariation = FaqAccordionSliceDefault;
+
+/**
+ * FaqAccordion Shared Slice
+ *
+ * - **API ID**: `faq_accordion`
+ * - **Description**: *None*
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type FaqAccordionSlice = prismic.SharedSlice<
+  "faq_accordion",
+  FaqAccordionSliceVariation
+>;
 
 /**
  * Primary content in *Hero → Default → Primary*
@@ -214,6 +477,108 @@ type HeroSliceVariation = HeroSliceDefault;
  */
 export type HeroSlice = prismic.SharedSlice<"hero", HeroSliceVariation>;
 
+/**
+ * Item in *MetricsHighlight → Grid Icon Metrics → Primary → Metrics*
+ */
+export interface MetricsHighlightSliceGridIconMetricsPrimaryMetricsItem {
+  /**
+   * Icon field in *MetricsHighlight → Grid Icon Metrics → Primary → Metrics*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: metrics_highlight.grid_icon_metrics.primary.metrics[].icon
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  icon: prismic.ImageField<never>;
+
+  /**
+   * Metric Title field in *MetricsHighlight → Grid Icon Metrics → Primary → Metrics*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: metrics_highlight.grid_icon_metrics.primary.metrics[].metric_title
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  metric_title: prismic.RichTextField;
+
+  /**
+   * Metric Description field in *MetricsHighlight → Grid Icon Metrics → Primary → Metrics*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: metrics_highlight.grid_icon_metrics.primary.metrics[].metric_description
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  metric_description: prismic.RichTextField;
+}
+
+/**
+ * Primary content in *MetricsHighlight → Grid Icon Metrics → Primary*
+ */
+export interface MetricsHighlightSliceGridIconMetricsPrimary {
+  /**
+   * Title field in *MetricsHighlight → Grid Icon Metrics → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: metrics_highlight.grid_icon_metrics.primary.title
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  title: prismic.RichTextField;
+
+  /**
+   * Description field in *MetricsHighlight → Grid Icon Metrics → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: metrics_highlight.grid_icon_metrics.primary.description
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  description: prismic.RichTextField;
+
+  /**
+   * Metrics field in *MetricsHighlight → Grid Icon Metrics → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: metrics_highlight.grid_icon_metrics.primary.metrics[]
+   * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
+   */
+  metrics: prismic.GroupField<
+    Simplify<MetricsHighlightSliceGridIconMetricsPrimaryMetricsItem>
+  >;
+}
+
+/**
+ * Grid Icon Metrics variation for MetricsHighlight Slice
+ *
+ * - **API ID**: `grid_icon_metrics`
+ * - **Description**: Metrics/features shown in a grid layout, each with an icon, title, and description. Title and intro on the left; features on the right.
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type MetricsHighlightSliceGridIconMetrics = prismic.SharedSliceVariation<
+  "grid_icon_metrics",
+  Simplify<MetricsHighlightSliceGridIconMetricsPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *MetricsHighlight*
+ */
+type MetricsHighlightSliceVariation = MetricsHighlightSliceGridIconMetrics;
+
+/**
+ * MetricsHighlight Shared Slice
+ *
+ * - **API ID**: `metrics_highlight`
+ * - **Description**: *None*
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type MetricsHighlightSlice = prismic.SharedSlice<
+  "metrics_highlight",
+  MetricsHighlightSliceVariation
+>;
+
 declare module "@prismicio/client" {
   interface CreateClient {
     (
@@ -238,11 +603,29 @@ declare module "@prismicio/client" {
       HomepageDocument,
       HomepageDocumentData,
       HomepageDocumentDataSlicesSlice,
+      PageDocument,
+      PageDocumentData,
+      PageDocumentDataSlicesSlice,
+      ServiceDocument,
+      ServiceDocumentData,
+      ServicesPageDocument,
+      ServicesPageDocumentData,
+      ServicesPageDocumentDataSlicesSlice,
       AllDocumentTypes,
+      FaqAccordionSlice,
+      FaqAccordionSliceDefaultPrimaryItemsItem,
+      FaqAccordionSliceDefaultPrimary,
+      FaqAccordionSliceVariation,
+      FaqAccordionSliceDefault,
       HeroSlice,
       HeroSliceDefaultPrimary,
       HeroSliceVariation,
       HeroSliceDefault,
+      MetricsHighlightSlice,
+      MetricsHighlightSliceGridIconMetricsPrimaryMetricsItem,
+      MetricsHighlightSliceGridIconMetricsPrimary,
+      MetricsHighlightSliceVariation,
+      MetricsHighlightSliceGridIconMetrics,
     };
   }
 }
