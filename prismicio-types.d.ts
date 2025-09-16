@@ -245,6 +245,26 @@ type ServicesPageDocumentDataSlicesSlice = FaqAccordionSlice | HeroSlice;
  */
 interface ServicesPageDocumentData {
   /**
+   * Title field in *services_page*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Page title
+   * - **API ID Path**: services_page.title
+   * - **Tab**: Main
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * Description field in *services_page*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Page description
+   * - **API ID Path**: services_page.description
+   * - **Tab**: Main
+   */
+  description: prismic.KeyTextField;
+
+  /**
    * Slice Zone field in *services_page*
    *
    * - **Field Type**: Slice Zone
