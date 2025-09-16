@@ -72,7 +72,7 @@ const NavGroup = ({ title, children }: NavGroupProps) => (
   <nav aria-labelledby={`${title.toLowerCase()}-heading`}>
     <h3
       id={`${title.toLowerCase()}-heading`}
-      className="mb-6 text-xl font-medium text-white"
+      className="mb-5 text-xl font-medium text-white"
     >
       {title}
     </h3>
